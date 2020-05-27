@@ -1,0 +1,18 @@
+name: windows code sign
+
+on: [ push ]
+
+jobs:
+  sign:
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    - run: |
+        7z x cert.7z -p${{ secrets.PFX7z_PASSW }}
+        & 'C:\Program Files (x86)\Windows Kits\10\bin\x86\signtool.exe' sign /f cert.pfx /p ${{ secrets.PFX_PASSW }}  /t http://timestamp.comodoca.com /v .\windows-build\*.exe
+       
+    - uses: actions/upload-artifact@v2
+      with:
+        name: signed-windows-build
+        path: windows-build
