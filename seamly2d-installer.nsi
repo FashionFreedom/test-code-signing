@@ -64,13 +64,10 @@ Section "Uninstall"
   DeleteRegKey HKLM SOFTWARE\NSIS_Seamly2D
 
   ; Remove files and uninstaller
-  Delete $INSTDIR\*
+  RMDir /r $INSTDIR
 
   ; Remove shortcuts, if any
   Delete "$SMPROGRAMS\Seamly2D\*.*"
-
-  ; Remove directories used
   RMDir "$SMPROGRAMS\Seamly2D"
-  RMDir "$INSTDIR"
 
 SectionEnd
