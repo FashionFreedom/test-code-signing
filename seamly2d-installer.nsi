@@ -28,15 +28,7 @@ Section "Seamly2D"
   
   SetOutPath $INSTDIR
 
-  File *.exe
-  File *.dll
-  File bearer\*.*
-  File iconengines\*.*
-  File imageformats\*.*
-  File platforms\*.*
-  File printsupport\*.*
-  File styles\*.*
-  File translations\*.*
+  File /r *
   
   
   ; Write the installation path into the registry
